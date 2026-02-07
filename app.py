@@ -49,10 +49,10 @@ def tts(req: TTSRequest):
         # OpenAI Audio API (TTS). gpt-4o-mini-tts 지원. :contentReference[oaicite:1]{index=1}
         audio = client.audio.speech.create(
             model="gpt-4o-mini-tts",
-            voice=req.voice,
-            input=tts_input,
-            format="mp3",
-            speed=req.speed,
+            voice=voice,
+            input=text,
+            response_format="mp3",   # ✅ 여기
+            # instructions=... (있으면 그대로)
         )
 
         if hasattr(audio, "read"):
